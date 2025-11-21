@@ -51,7 +51,11 @@ public enum DeviceVersion {
     case iPhone16Pro
     case iPhone16Plus
     case iPhone16ProMax
-    
+    case iPhone16e
+    case iPhone17
+    case iPhone17Pro
+    case iPhone17ProMax
+    case iPhone17Air
 
     /*** iPad ***/
     case iPad1
@@ -142,8 +146,13 @@ public enum DeviceVersion {
         case "iPhone16,2":                               return .iPhone15ProMax
         case "iPhone17,3":                               return .iPhone16
         case "iPhone17,4":                               return .iPhone16Plus
+        case "iPhone17,5":                               return .iPhone16e
         case "iPhone17,1":                               return .iPhone16Pro
         case "iPhone17,2":                               return .iPhone16ProMax
+        case "iPhone18,1":                               return .iPhone17Pro
+        case "iPhone18,2":                               return .iPhone17ProMax
+        case "iPhone18,3":                               return .iPhone17
+        case "iPhone18,4":                               return .iPhone17Air
             
             /*** iPad ***/
         case "iPad1,1":                                  return .iPad1
