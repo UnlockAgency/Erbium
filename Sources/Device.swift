@@ -78,6 +78,15 @@ public class Device {
         return false
         #endif
     }
+    
+    nonisolated(unsafe) fileprivate static var safeaAreaInsets: UIEdgeInsets?
+    
+    fileprivate static func getSafeAreaInsets() -> UIEdgeInsets? {
+        if #available(iOS 11.0, *), safeaAreaInsets == nil {
+            safeaAreaInsets = UIApplication.shared.windows.first?.safeAreaInsets ?? UIApplication.shared.keyWindow?.safeAreaInsets
+        }
+        return safeaAreaInsets
+    }
 }
 
 // MARK: - Hardware capabilities
@@ -106,14 +115,14 @@ extension Device {
     
     public static var topInset: CGFloat {
         if #available(iOS 11.0, *) {
-            return UIApplication.shared.windows.first?.safeAreaInsets.top ?? UIApplication.shared.keyWindow?.safeAreaInsets.top ?? 0
+            return getSafeAreaInsets()?.top ?? 0
         }
         return 0
     }
     
     public static var bottomInset: CGFloat {
         if #available(iOS 11.0, *) {
-            return UIApplication.shared.windows.first?.safeAreaInsets.bottom ?? UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
+            return getSafeAreaInsets()?.bottom ?? 0
         }
         return 0
     }
